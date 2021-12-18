@@ -1,0 +1,30 @@
+
+CREATE ROLE ECOMM_USERS;
+GRANT EXECUTE ON ADMIN.proc_order_details_insert TO ECOMM_USERS;
+GRANT EXECUTE ON ADMIN.proc_line_items_insert TO ECOMM_USERS;
+GRANT SELECT ON ADMIN.VPRODUCT_ORDER_DETAILS TO ECOMM_USERS;
+GRANT EXECUTE ON ADMIN.CANCEL_ORDER TO ECOMM_USERS;
+GRANT EXECUTE ON ADMIN.PROC_CUST_INACTIVE TO ECOMM_USERS;
+
+CREATE USER analytics_user1 IDENTIFIED BY AnalyticsUser1# ;
+GRANT CREATE SESSION TO analytics_user1;
+GRANT SELECT ON VDAILY_ANALYTICS TO analytics_user1;
+---connect analytics_user1;
+GRANT ANALYTICS TO analytics_user1;
+
+
+CREATE USER sales_user1 IDENTIFIED BY SalesUser1# ;
+GRANT CREATE SESSION TO sales_user1;
+----connect sales_user1;
+GRANT SELECT ON VSALES TO sales_user1;
+
+
+CREATE USER scm_user1 IDENTIFIED BY ScmUser1# ;
+GRANT CREATE SESSION TO scm_user1;
+---connect scm_user1;
+GRANT SELECT ON VORDERS_STATUS TO scm_user1;
+GRANT EXECUTE ON PROC_ADD_VENDOR TO scm_user1;
+grant execute on proc_add_vendor_address to scm_user1;
+grant execute on PROC_ORDER_STATUS to scm_user1;
+
+
